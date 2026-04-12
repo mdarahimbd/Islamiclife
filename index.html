@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life in Light of Islam | Islamic Daily Guidance</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Hind+Siliguri:wght@400;500;600&family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: { 900: '#064e3b', 800: '#0a5d48' },
+                        gold: { DEFAULT: '#d4af37', light: '#e8c96c' },
+                        cream: { DEFAULT: '#fffaf0', dark: '#f2ece1' }
+                    },
+                    fontFamily: {
+                        playfair: ['"Playfair Display"', 'serif'],
+                        hind: ['"Hind Siliguri"', 'sans-serif'],
+                        amiri: ['"Amiri"', 'serif'],
+                        inter: ['"Inter"', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'islamic-pattern': "url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%23d4af37\" fill-opacity=\"0.05\"%3E%3Cpath d=\"M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')"
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        html { scroll-behavior: smooth; }
+        body { background-color: #fffaf0; color: #064e3b; }
+        .bn-mode .en-text { display: none !important; }
+        .en-mode .bn-text { display: none !important; }
+        
+        /* Shimmer Loading Animation */
+        .shimmer {
+            background: #f6f7f8;
+            background-image: linear-gradient(to right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
+            background-repeat: no-repeat;
+            background-size: 800px 100%; 
+            animation: placeholderShimmer 1.5s linear infinite forwards;
+        }
+        @keyframes placeholderShimmer {
+            0% { background-position: -468px 0; }
+            100% { background-position: 468px 0; }
+        }
+    </style>
+</head>
+<body class="font-inter antialiased bg-islamic-pattern bg-fixed bn-mode" id="app-body">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-cream/90 backdrop-blur-md border-b border-gold/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="window.location.reload()">
+                    <i data-lucide="moon-star" class="text-gold w-8 h-8"></i>
+                    <div class="flex flex-col">
+                        <span class="font-playfair font-bold text-xl leading-tight text-emerald-900 en-text">Life in Light of Islam</span>
+                        <span class="font-hind font-bold text-xl leading-tight text-emerald-900 bn-text">ইসলামের আলোয় জীবন</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-6">
+                    <div class="flex items-center bg-cream-dark rounded-full p-1 border border-gold/30">
+                        <button id="btn-en" onclick="setLanguage('en')" class="px-4 py-1.5 text-sm font-medium rounded-full text-emerald-900 hover:text-gold transition-all">EN</button>
+                        <button id="btn-bn" onclick="setLanguage('bn')" class="px-4 py-1.5 text-sm font-hind font-medium rounded-full bg-emerald-900 text-cream shadow-sm transition-all">বাংলা</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero / Search Section -->
+    <header class="relative pt-20 pb-24 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-cream to-transparent z-0"></div>
+        <div class="max-w-4xl mx-auto px-4 relative z-10 text-center">
+            
+            <h1 class="font-playfair text-5xl md:text-6xl font-semibold text-emerald-900 mb-4 tracking-tight">
+                <span class="en-text">Guidance for Every Aspect of Life</span>
+                <span class="bn-text font-hind">জীবনের প্রতিটি ক্ষেত্রের দিকনির্দেশনা</span>
+            </h1>
+            <p class="font-inter text-xl md:text-2xl text-emerald-800 mb-10">
+                <span class="en-text">Find accurate solutions from the Holy Quran & Authentic Sunnah</span>
+                <span class="bn-text font-hind">পবিত্র কুরআন ও সহীহ সুন্নাহর আলোকে আপনার প্রশ্নের সঠিক উত্তর খুঁজুন</span>
+            </p>
+
+            <!-- Search Bar -->
+            <div class="relative max-w-2xl mx-auto">
+                <div class="absolute inset-y-0 left-0 pl-6 flex items-center pointer-events-none">
+                    <i data-lucide="search" class="h-6 w-6 text-gold"></i>
+                </div>
+                <input type="text" id="search-input"
+                    class="block w-full pl-16 pr-32 py-5 border-2 border-gold/30 rounded-full text-lg shadow-lg focus:ring-2 focus:ring-gold focus:border-gold bg-white placeholder-gray-400 transition-all outline-none" 
+                    placeholder="যেকোনো বিষয় খুঁজুন (যেমন: রাগ নিয়ন্ত্রণ, পিতা-মাতার হক)...">
+                <div class="absolute inset-y-2 right-2">
+                    <button onclick="handleSearch()" class="bg-emerald-900 hover:bg-emerald-800 text-cream px-8 py-3 rounded-full font-medium transition-colors h-full flex items-center">
+                        <span class="en-text">Search</span>
+                        <span class="bn-text font-hind">খুঁজুন</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="mt-4 text-sm text-emerald-800/70 font-hind">
+                <span class="bn-text">💡 এআই (AI) এর মাধ্যমে যেকোনো ছোটখাটো বিষয়েরও উত্তর পাওয়া যাবে।</span>
+                <span class="en-text">💡 AI-powered search for any niche topic.</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- SEARCH RESULTS CONTAINER -->
+    <main class="max-w-5xl mx-auto px-4 py-10 min-h-[400px]" id="search-results-container">
+        <!-- Results will be injected here via JavaScript -->
+    </main>
+
+    <!-- JavaScript for Functionality & Gemini API -->
+    <script>
+        // ==========================================
+        // 1. GEMINI API CONFIGURATION
+        // ==========================================
+        // এখানে আপনার Gemini API Key বসান:
+        const GEMINI_API_KEY = "YOUR_GEMINI_API_KEY"; 
+
+        // ==========================================
+        // 2. LOCAL DATABASE (Fast & Verified)
+        // ==========================================
+        const localDatabase = [
+            {
+                keywords: ["manners", "speech", "আচরণ", "কথা", "শিষ্টাচার"],
+                titleEn: "Manners of Speech & Behavior",
+                titleBn: "কথাবার্তা ও আচরণের শিষ্টাচার",
+                summaryEn: "Islam places immense emphasis on the manners of speech. A Muslim is enjoined to speak the truth, use kind words, lower their voice, and avoid backbiting.",
+                summaryBn: "ইসলামে কথাবার্তা ও আচরণের শিষ্টাচারের ওপর অত্যন্ত গুরুত্ব দেওয়া হয়েছে। একজন মুসলিমকে সর্বদা সত্য কথা বলার, নম্র শব্দ ব্যবহার করার এবং গীবত থেকে বিরত থাকার নির্দেশ দেওয়া হয়েছে।",
+                quranicEvidences: [
+                    {
+                        arabic: "وَقُل لِّعِبَادِي يَقُولُوا الَّتِي هِيَ أَحْسَنُ ۚ",
+                        translationEn: "And tell My servants to say that which is best.",
+                        translationBn: "আর আমার বান্দাদেরকে বলে দিন, তারা যেন এমন কথা বলে যা অতি সুন্দর।",
+                        refEn: "Surah Al-Isra, Verse 53",
+                        refBn: "সূরা আল-ইসরা, আয়াত ৫৩"
+                    }
+                ],
+                hadithEvidences: [
+                    {
+                        arabic: "مَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الآخِرِ فَلْيَقُلْ خَيْرًا أَوْ لِيَصْمُتْ",
+                        translationEn: "He who believes in Allah and the Last Day, let him speak good or remain silent.",
+                        translationBn: "যে ব্যক্তি আল্লাহ ও শেষ দিবসের প্রতি ঈমান রাখে, সে যেন ভালো কথা বলে অথবা চুপ থাকে।",
+                        refEn: "Sahih al-Bukhari 6018",
+                        refBn: "সহীহ বুখারী, হাদিস নং ৬০১৮"
+                    }
+                ],
+                isAI: false
+            }
+            // You can add more local data here if you want...
+        ];
+
+        // ==========================================
+        // 3. LANGUAGE TOGGLE
+        // ==========================================
+        let currentLang = 'bn'; // Default changed to Bengali for user preference
+        
+        function setLanguage(lang) {
+            currentLang = lang;
+            const body = document.getElementById('app-body');
+            const btnEn = document.getElementById('btn-en');
+            const btnBn = document.getElementById('btn-bn');
+
+            if (lang === 'en') {
+                body.classList.remove('bn-mode');
+                body.classList.add('en-mode');
+                btnEn.classList.replace('text-emerald-900', 'bg-emerald-900');
+                btnEn.classList.add('text-cream', 'shadow-sm');
+                btnBn.classList.replace('bg-emerald-900', 'transparent');
+                btnBn.classList.replace('text-cream', 'text-emerald-900');
+                document.getElementById('search-input').placeholder = "Search a topic (e.g., Anger management, Parents)...";
+            } else {
+                body.classList.remove('en-mode');
+                body.classList.add('bn-mode');
+                btnBn.classList.replace('text-emerald-900', 'bg-emerald-900');
+                btnBn.classList.add('text-cream', 'shadow-sm');
+                btnEn.classList.replace('bg-emerald-900', 'transparent');
+                btnEn.classList.replace('text-cream', 'text-emerald-900');
+                document.getElementById('search-input').placeholder = "যেকোনো বিষয় খুঁজুন (যেমন: রাগ নিয়ন্ত্রণ, পিতা-মাতার হক)...";
+            }
+        }
+
+        // ==========================================
+        // 4. SEARCH FUNCTIONALITY & GEMINI CALL
+        // ==========================================
+        const searchInput = document.getElementById('search-input');
+        const resultsContainer = document.getElementById('search-results-container');
+
+        searchInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') handleSearch();
+        });
+
+        async function handleSearch() {
+            const query = searchInput.value.toLowerCase().trim();
+            if (!query) return;
+
+            // Show Loading State
+            renderLoadingUI();
+            resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            // 1. Check Local Database First (Fast & accurate for common topics)
+            const localResult = localDatabase.find(item => 
+                item.keywords.some(kw => query.includes(kw))
+            );
+
+            if (localResult) {
+                setTimeout(() => renderResult(localResult), 500); // Small delay for smooth UI
+                return;
+            }
+
+            // 2. If not found locally, Ask Gemini API
+            if(GEMINI_API_KEY === "YOUR_GEMINI_API_KEY") {
+                renderError("দয়া করে কোডে আপনার Gemini API Key বসান। (Please insert your Gemini API Key in the code).");
+                return;
+            }
+
+            try {
+                const aiData = await fetchFromGemini(query);
+                aiData.isAI = true;
+                renderResult(aiData);
+            } catch (error) {
+                console.error(error);
+                renderError("দুঃখিত, এআই সার্ভারে কোনো সমস্যা হয়েছে। একটু পর আবার চেষ্টা করুন।");
+            }
+        }
+
+        // ------------------------------------------
+        // GEMINI API FETCH LOGIC
+        // ------------------------------------------
+        async function fetchFromGemini(query) {
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`;
+            
+            // STRICT PROMPT to ensure we get exactly the JSON format we need.
+            const prompt = `You are an expert Islamic Scholar. Provide accurate Islamic guidance based on the Quran and Sahih Hadith for the topic: "${query}".
+            Provide the output STRICTLY in JSON format without any markdown blocks like \`\`\`json. The JSON must exactly match this structure:
+            {
+                "titleEn": "Topic Name in English",
+                "titleBn": "Topic Name in Bengali",
+                "summaryEn": "A 3-4 sentence comprehensive overview in English.",
+                "summaryBn": "A 3-4 sentence comprehensive overview in simple and accurate Bengali.",
+                "quranicEvidences": [
+                    {
+                        "arabic": "Exact Arabic verse text",
+                        "translationEn": "English translation",
+                        "translationBn": "Accurate Bengali translation",
+                        "refEn": "Surah Name, Verse X",
+                        "refBn": "সূরা নাম, আয়াত X"
+                    }
+                ],
+                "hadithEvidences": [
+                    {
+                        "arabic": "Exact Arabic hadith text",
+                        "translationEn": "English translation",
+                        "translationBn": "Accurate Bengali translation",
+                        "refEn": "Hadith Reference (e.g., Sahih Bukhari 123)",
+                        "refBn": "হাদিস রেফারেন্স (যেমন: সহীহ বুখারী ১২৩)"
+                    }
+                ]
+            }
+            Ensure you provide 1 or 2 Quranic verses and 1 or 2 Hadiths. Make sure the Bengali translation is standard and accurate. DO NOT wrap the JSON in backticks.`;
+
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    contents: [{ parts: [{ text: prompt }] }],
+                    generationConfig: {
+                        responseMimeType: "application/json",
+                        temperature: 0.2 // Low temperature for factual answers
+                    }
+                })
+            });
+
+            if (!response.ok) throw new Error("API call failed");
+
+            const data = await response.json();
+            const textResponse = data.candidates[0].content.parts[0].text;
+            
+            // Parse JSON response safely
+            return JSON.parse(textResponse);
+        }
+
+        // ==========================================
+        // 5. UI RENDERING FUNCTIONS
+        // ==========================================
+        function renderLoadingUI() {
+            resultsContainer.innerHTML = `
+                <div class="text-center mb-8">
+                    <i data-lucide="sparkles" class="w-10 h-10 text-gold mx-auto animate-spin-slow mb-4"></i>
+                    <h3 class="font-playfair text-2xl text-emerald-900 en-text">AI is searching the Quran & Sunnah...</h3>
+                    <h3 class="font-hind text-2xl text-emerald-900 bn-text">Gemini AI কুরআন ও সুন্নাহ থেকে উত্তর খুঁজছে...</h3>
+                </div>
+                <div class="space-y-6 max-w-4xl mx-auto">
+                    <div class="w-full h-32 shimmer rounded-3xl"></div>
+                    <div class="w-full h-64 shimmer rounded-3xl"></div>
+                    <div class="w-full h-64 shimmer rounded-3xl"></div>
+                </div>
+            `;
+            lucide.createIcons();
+        }
+
+        function renderResult(data) {
+            // Check if AI or Local
+            const sourceBadge = data.isAI 
+                ? `<span class="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-50 text-blue-700 text-xs font-bold uppercase tracking-wide rounded-full border border-blue-200"><i data-lucide="bot" class="w-3 h-3"></i> AI Generated (Gemini)</span>`
+                : `<span class="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-bold uppercase tracking-wide rounded-full border border-emerald-200"><i data-lucide="shield-check" class="w-3 h-3"></i> Verified Database</span>`;
+
+            // Render Quranic Verses
+            let quranHTML = '';
+            if(data.quranicEvidences && data.quranicEvidences.length > 0) {
+                quranHTML = data.quranicEvidences.map((q, index) => `
+                    <div class="${index > 0 ? 'mt-10 pt-10 border-t border-gold/30' : ''}">
+                        <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-2">
+                            <span class="text-gold tracking-widest text-xs uppercase font-semibold">Verse ${index + 1}</span>
+                            <span class="text-sm font-light opacity-80 en-text bg-emerald-800/50 px-3 py-1 rounded-full">${q.refEn}</span>
+                            <span class="text-sm font-light opacity-80 bn-text font-hind bg-emerald-800/50 px-3 py-1 rounded-full">${q.refBn}</span>
+                        </div>
+                        <div class="text-right mb-8"><p class="font-amiri text-3xl md:text-5xl leading-[2.5] text-cream">${q.arabic}</p></div>
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div>
+                                <h4 class="text-gold text-xs uppercase tracking-widest mb-2 border-b border-gold/20 pb-2 inline-block">English Translation</h4>
+                                <p class="font-inter font-light text-lg leading-relaxed text-cream/90">"${q.translationEn}"</p>
+                            </div>
+                            <div>
+                                <h4 class="text-gold text-xs uppercase tracking-widest mb-2 border-b border-gold/20 pb-2 font-hind inline-block">বাংলা অনুবাদ</h4>
+                                <p class="font-hind text-xl font-light leading-relaxed text-cream/90">"${q.translationBn}"</p>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            } else {
+                quranHTML = `<p class="text-cream opacity-70">No specific verse found for this niche topic, refer to general rulings.</p>`;
+            }
+
+            // Render Hadiths
+            let hadithHTML = '';
+            if(data.hadithEvidences && data.hadithEvidences.length > 0) {
+                hadithHTML = data.hadithEvidences.map((h, index) => `
+                    <div class="${index > 0 ? 'mt-10 pt-10 border-t border-gold/20' : ''}">
+                        <div class="text-center max-w-4xl mx-auto mb-8 space-y-6">
+                            <p class="font-amiri text-2xl md:text-4xl leading-[2.2] text-emerald-900">${h.arabic}</p>
+                            <div class="space-y-4 pt-4">
+                                <p class="font-inter text-gray-700 text-lg leading-relaxed">"${h.translationEn}"</p>
+                                <p class="font-hind text-gray-800 text-xl leading-relaxed">"${h.translationBn}"</p>
+                            </div>
+                        </div>
+                        <div class="flex justify-center">
+                            <span class="inline-flex items-center gap-2 px-4 py-2 bg-cream-dark text-emerald-900 rounded-full text-sm font-medium border border-gold/20">
+                                <i data-lucide="bookmark" class="w-4 h-4 text-gold"></i>
+                                <span class="en-text">${h.refEn}</span>
+                                <span class="bn-text font-hind">${h.refBn}</span>
+                            </span>
+                        </div>
+                    </div>
+                `).join('');
+            } else {
+                hadithHTML = `<p class="text-gray-500 text-center">No specific Hadith found for this query.</p>`;
+            }
+
+            // Inject into DOM
+            resultsContainer.innerHTML = `
+                <div class="mb-10 text-center animate-fade-in">
+                    <div class="flex justify-center mb-4">${sourceBadge}</div>
+                    <h2 class="font-playfair text-3xl md:text-5xl font-bold text-emerald-900 en-text mb-2">${data.titleEn}</h2>
+                    <h2 class="font-hind text-3xl md:text-5xl font-bold text-emerald-900 bn-text mb-2">${data.titleBn}</h2>
+                </div>
+
+                <!-- Overview Section -->
+                <article class="bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-gold/20 mb-10 relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-2 h-full bg-gold"></div>
+                    <h3 class="font-playfair text-xl font-semibold mb-4 flex items-center gap-2 text-emerald-900">
+                        <i data-lucide="book-open" class="text-gold w-5 h-5"></i> 
+                        <span class="en-text">Overview & Explanation</span>
+                        <span class="bn-text font-hind">সারসংক্ষেপ ও ব্যাখ্যা</span>
+                    </h3>
+                    <p class="text-gray-700 leading-relaxed font-inter text-justify en-text text-lg">${data.summaryEn}</p>
+                    <p class="font-hind text-gray-700 leading-relaxed text-justify text-xl bn-text">${data.summaryBn}</p>
+                </article>
+
+                <!-- Quran Section -->
+                <article class="bg-emerald-900 text-cream rounded-3xl p-8 md:p-12 shadow-lg mb-10">
+                    <div class="flex items-center gap-3 mb-8 pb-6 border-b-2 border-gold">
+                        <i data-lucide="book" class="w-8 h-8 text-gold"></i> 
+                        <h3 class="font-playfair text-2xl text-gold">
+                            <span class="en-text">Verses from the Holy Quran</span>
+                            <span class="bn-text font-hind">পবিত্র কুরআনের আয়াতসমূহ</span>
+                        </h3>
+                    </div>
+                    ${quranHTML}
+                </article>
+
+                <!-- Hadith Section -->
+                <article class="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-gold/20 relative mb-10">
+                    <div class="absolute top-0 right-10 w-12 h-16 bg-gold/10 rounded-b-full flex items-center justify-center">
+                        <i data-lucide="quote" class="text-gold w-6 h-6"></i>
+                    </div>
+                    <div class="flex items-center gap-3 mb-10 pb-6 border-b-2 border-gold/20">
+                        <h3 class="font-playfair text-2xl font-semibold text-emerald-900">
+                            <span class="en-text">Authentic Hadiths (Sunnah)</span>
+                            <span class="bn-text font-hind">সহীহ হাদিসসমূহ (সুন্নাহ)</span>
+                        </h3>
+                    </div>
+                    ${hadithHTML}
+                </article>
+            `;
+            lucide.createIcons();
+        }
+
+        function renderError(msg) {
+            resultsContainer.innerHTML = `
+                <div class="text-center py-16 bg-white rounded-3xl border border-red-200 shadow-sm">
+                    <i data-lucide="alert-circle" class="w-16 h-16 text-red-400 mx-auto mb-4"></i>
+                    <h2 class="font-hind text-2xl text-emerald-900 mb-2">${msg}</h2>
+                </div>
+            `;
+            lucide.createIcons();
+        }
+
+        // Initialize icons on page load
+        lucide.createIcons();
+    </script>
+</body>
+</html>
