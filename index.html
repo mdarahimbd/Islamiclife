@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life in Light of Islam | AI Islamic Guidance</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Hind+Siliguri:wght@400;500;600&family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: { 900: '#064e3b', 800: '#0a5d48' },
+                        gold: { DEFAULT: '#d4af37', light: '#e8c96c' },
+                        cream: { DEFAULT: '#fffaf0', dark: '#f2ece1' }
+                    },
+                    fontFamily: {
+                        playfair: ['"Playfair Display"', 'serif'],
+                        hind: ['"Hind Siliguri"', 'sans-serif'],
+                        amiri: ['"Amiri"', 'serif'],
+                        inter: ['"Inter"', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'islamic-pattern': "url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%23d4af37\" fill-opacity=\"0.05\"%3E%3Cpath d=\"M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')"
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        html { scroll-behavior: smooth; }
+        body { background-color: #fffaf0; color: #064e3b; }
+        .bn-mode .en-text { display: none !important; }
+        .en-mode .bn-text { display: none !important; }
+        
+        /* Shimmer Animation for AI Loading */
+        .shimmer {
+            background: #f6f7f8;
+            background-image: linear-gradient(to right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
+            background-repeat: no-repeat;
+            background-size: 800px 100%; 
+            animation-duration: 1.5s;
+            animation-fill-mode: forwards; 
+            animation-iteration-count: infinite;
+            animation-name: placeholderShimmer;
+            animation-timing-function: linear;
+        }
+        @keyframes placeholderShimmer {
+            0% { background-position: -468px 0; }
+            100% { background-position: 468px 0; }
+        }
+    </style>
+</head>
+<body class="font-inter antialiased bg-islamic-pattern bg-fixed en-mode" id="app-body">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-cream/90 backdrop-blur-md border-b border-gold/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="window.location.reload()">
+                    <i data-lucide="moon-star" class="text-gold w-8 h-8"></i>
+                    <div class="flex flex-col">
+                        <span class="font-playfair font-bold text-xl leading-tight text-emerald-900 en-text">Life in Light of Islam</span>
+                        <span class="font-hind font-bold text-xl leading-tight text-emerald-900 bn-text">ইসলামের আলোয় জীবন</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-6">
+                    <div class="flex items-center bg-cream-dark rounded-full p-1 border border-gold/30">
+                        <button id="btn-en" onclick="setLanguage('en')" class="px-4 py-1.5 text-sm font-medium rounded-full bg-emerald-900 text-cream shadow-sm transition-all">EN</button>
+                        <button id="btn-bn" onclick="setLanguage('bn')" class="px-4 py-1.5 text-sm font-hind font-medium rounded-full text-emerald-900 hover:text-gold transition-all">বাংলা</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero / Search Section -->
+    <header class="relative pt-20 pb-24 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-cream to-transparent z-0"></div>
+        <div class="max-w-4xl mx-auto px-4 relative z-10 text-center">
+            
+            <h1 class="font-playfair text-5xl md:text-6xl font-semibold text-emerald-900 mb-4 tracking-tight">
+                <span class="en-text">AI Guidance from Quran & Sunnah</span>
+                <span class="bn-text font-hind">কুরআন ও সুন্নাহ থেকে এআই দিকনির্দেশনা</span>
+            </h1>
+            <p class="font-inter text-xl md:text-2xl text-emerald-800 mb-10">
+                <span class="en-text">Ask anything. Powered by multiple AI engines.</span>
+                <span class="bn-text font-hind">যেকোনো প্রশ্ন করুন। একাধিক এআই ইঞ্জিন দ্বারা চালিত।</span>
+            </p>
+
+            <!-- Search Bar -->
+            <div class="relative max-w-3xl mx-auto">
+                <div class="absolute inset-y-0 left-0 pl-6 flex items-center pointer-events-none">
+                    <i data-lucide="sparkles" class="h-6 w-6 text-gold"></i>
+                </div>
+                <input type="text" id="search-input"
+                    class="block w-full pl-16 pr-32 py-5 border-2 border-gold/30 rounded-full text-lg shadow-lg focus:ring-2 focus:ring-gold focus:border-gold bg-white placeholder-gray-400 transition-all outline-none" 
+                    placeholder="Ask a question (e.g., Etiquette of eating, Anger management)...">
+                <div class="absolute inset-y-2 right-2">
+                    <button onclick="handleSearch()" id="search-btn" class="bg-emerald-900 hover:bg-emerald-800 text-cream px-8 py-3 rounded-full font-medium transition-colors h-full flex items-center gap-2">
+                        <span class="en-text">Ask AI</span>
+                        <span class="bn-text font-hind">জিজ্ঞাসা করুন</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- SEARCH RESULTS CONTAINER -->
+    <main class="max-w-5xl mx-auto px-4 py-10 min-h-[500px]" id="search-results-container">
+        <!-- Results will be injected here via JavaScript -->
+    </main>
+
+    <!-- JavaScript for Functionality & AI -->
+    <script>
+        // ==========================================
+        // 1. API CONFIGURATION (FALLBACK SYSTEM)
+        // ==========================================
+        // The system will try DeepSeek first, if it fails, it tries OpenAI, then Grok.
+        // REPLACE "YOUR_API_KEY" WITH YOUR ACTUAL KEYS.
+        const AI_PROVIDERS = [
+            {
+                name: "DeepSeek",
+                url: "https://api.deepseek.com/v1/chat/completions",
+                key: "YOUR_DEEPSEEK_API_KEY", 
+                model: "deepseek-chat"
+            },
+            {
+                name: "OpenAI",
+                url: "https://api.openai.com/v1/chat/completions",
+                key: "YOUR_OPENAI_API_KEY",
+                model: "gpt-4o-mini" // or gpt-3.5-turbo
+            },
+            {
+                name: "Grok",
+                url: "https://api.x.ai/v1/chat/completions",
+                key: "YOUR_XAI_API_KEY",
+                model: "grok-beta"
+            }
+        ];
+
+        // System prompt ensures the AI always returns the exact JSON format we need
+        const SYSTEM_PROMPT = `You are a highly knowledgeable Islamic scholar. Provide guidance based strictly on authentic Quran and Sahih Sunnah. 
+        The user will ask about a topic. You must return ONLY a raw JSON object (no markdown, no backticks, no introductory text) matching this exact structure:
+        {
+            "titleEn": "Topic Title in English",
+            "titleBn": "Topic Title in Bengali",
+            "summaryEn": "A 3-4 sentence comprehensive overview in English.",
+            "summaryBn": "A 3-4 sentence comprehensive overview in Bengali.",
+            "quranAr": "One relevant Quranic verse in Arabic text",
+            "quranEn": "English translation of the verse",
+            "quranBn": "Bengali translation of the verse",
+            "quranRef": "Surah Name, Verse Number",
+            "hadithAr": "One relevant authentic Hadith in Arabic text",
+            "hadithEn": "English translation of the Hadith",
+            "hadithBn": "Bengali translation of the Hadith",
+            "hadithRef": "Hadith Reference (e.g., Sahih al-Bukhari 1234)"
+        }`;
+
+        // Local static database for instant results (Cache)
+        const localDatabase = [
+            {
+                keywords: ["manners", "speech", "আচরণ", "কথা", "শিষ্টাচার"],
+                titleEn: "Manners of Speech",
+                titleBn: "কথাবার্তার শিষ্টাচার",
+                summaryEn: "Islam places immense emphasis on the manners of speech. A Muslim is enjoined to speak the truth, use kind words, avoid backbiting, and remain silent if they have nothing good to say.",
+                summaryBn: "ইসলামে কথাবার্তার শিষ্টাচারের ওপর অত্যন্ত গুরুত্ব দেওয়া হয়েছে। একজন মুসলিমকে সর্বদা সত্য কথা বলার, সদয় শব্দ ব্যবহার করার এবং গীবত থেকে বিরত থাকার নির্দেশ দেওয়া হয়েছে।",
+                quranAr: "وَقُل لِّعِبَادِي يَقُولُوا الَّتِي هِيَ أَحْسَنُ ۚ",
+                quranEn: "And tell My servants to say that which is best.",
+                quranBn: "আর আমার বান্দাদেরকে বলে দিন, তারা যেন এমন কথা বলে যা অতি সুন্দর।",
+                quranRef: "Surah Al-Isra, 17:53",
+                hadithAr: "مَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الآخِرِ فَلْيَقُلْ خَيْرًا أَوْ لِيَصْمُتْ",
+                hadithEn: "He who believes in Allah and the Last Day, let him speak good or remain silent.",
+                hadithBn: "যে ব্যক্তি আল্লাহ ও শেষ দিবসের প্রতি ঈমান রাখে, সে যেন ভালো কথা বলে অথবা চুপ থাকে।",
+                hadithRef: "Sahih al-Bukhari 6018",
+                isAI: false
+            }
+        ];
+
+        // ==========================================
+        // 2. LANGUAGE TOGGLE
+        // ==========================================
+        let currentLang = 'en';
+        function setLanguage(lang) {
+            currentLang = lang;
+            const body = document.getElementById('app-body');
+            const btnEn = document.getElementById('btn-en');
+            const btnBn = document.getElementById('btn-bn');
+
+            if (lang === 'en') {
+                body.classList.remove('bn-mode');
+                body.classList.add('en-mode');
+                btnEn.classList.replace('text-emerald-900', 'bg-emerald-900');
+                btnEn.classList.add('text-cream', 'shadow-sm');
+                btnBn.classList.replace('bg-emerald-900', 'transparent');
+                btnBn.classList.replace('text-cream', 'text-emerald-900');
+                document.getElementById('search-input').placeholder = "Ask a question (e.g., Etiquette of eating)...";
+            } else {
+                body.classList.remove('en-mode');
+                body.classList.add('bn-mode');
+                btnBn.classList.replace('text-emerald-900', 'bg-emerald-900');
+                btnBn.classList.add('text-cream', 'shadow-sm');
+                btnEn.classList.replace('bg-emerald-900', 'transparent');
+                btnEn.classList.replace('text-cream', 'text-emerald-900');
+                document.getElementById('search-input').placeholder = "একটি বিষয় জিজ্ঞাসা করুন (যেমন: খাওয়ার আদব)...";
+            }
+        }
+
+        // ==========================================
+        // 3. SEARCH & AI FETCH LOGIC
+        // ==========================================
+        const searchInput = document.getElementById('search-input');
+        const resultsContainer = document.getElementById('search-results-container');
+        const searchBtn = document.getElementById('search-btn');
+
+        searchInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') handleSearch();
+        });
+
+        async function handleSearch() {
+            const query = searchInput.value.toLowerCase().trim();
+            if (!query) return;
+
+            // Show Loading UI
+            renderLoadingUI();
+            resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            // 1. Check local static database first (for instant response)
+            const localResult = localDatabase.find(item => 
+                item.keywords.some(kw => query.includes(kw))
+            );
+
+            if (localResult) {
+                setTimeout(() => renderResult(localResult), 500); // slight delay for effect
+                return;
+            }
+
+            // 2. If not in local database, fetch from AI
+            try {
+                const aiResult = await fetchFromAIWithFallback(query);
+                aiResult.isAI = true; // Flag to show AI badge
+                renderResult(aiResult);
+            } catch (error) {
+                renderError(error.message);
+            }
+        }
+
+        // Core Fallback Function
+        async function fetchFromAIWithFallback(query) {
+            let lastError = "";
+
+            // Loop through our API providers one by one
+            for (let i = 0; i < AI_PROVIDERS.length; i++) {
+                const provider = AI_PROVIDERS[i];
+                
+                // Skip if key hasn't been added
+                if(provider.key.includes("YOUR_")) {
+                    console.log(`Skipping ${provider.name}: API Key not configured.`);
+                    continue;
+                }
+
+                console.log(`Attempting to fetch from ${provider.name}...`);
+
+                try {
+                    const response = await fetch(provider.url, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${provider.key}`
+                        },
+                        body: JSON.stringify({
+                            model: provider.model,
+                            messages: [
+                                { role: "system", content: SYSTEM_PROMPT },
+                                { role: "user", content: query }
+                            ],
+                            temperature: 0.3 // Low temp for more factual, less creative answers
+                        })
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    const data = await response.json();
+                    let aiText = data.choices[0].message.content;
+                    
+                    // Clean up string just in case AI added markdown code blocks
+                    aiText = aiText.replace(/```json/g, '').replace(/```/g, '').trim();
+                    
+                    // Parse JSON and return
+                    return JSON.parse(aiText);
+
+                } catch (error) {
+                    console.warn(`[Failed] ${provider.name} failed:`, error);
+                    lastError = error.message;
+                    // Loop continues to the next provider automatically!
+                }
+            }
+
+            // If the loop finishes and nothing returned, all failed.
+            throw new Error("All configured AI providers failed. Please check your API keys or internet connection.");
+        }
+
+
+        // ==========================================
+        // 4. UI RENDERING FUNCTIONS
+        // ==========================================
+
+        function renderLoadingUI() {
+            resultsContainer.innerHTML = `
+                <div class="text-center mb-8">
+                    <i data-lucide="sparkles" class="w-10 h-10 text-gold mx-auto animate-spin-slow mb-4"></i>
+                    <h3 class="font-playfair text-2xl text-emerald-900 en-text">AI is searching the Quran & Sunnah...</h3>
+                    <h3 class="font-hind text-2xl text-emerald-900 bn-text">এআই কুরআন ও সুন্নাহ থেকে উত্তর খুঁজছে...</h3>
+                </div>
+                <div class="space-y-6 max-w-4xl mx-auto">
+                    <div class="w-full h-32 shimmer rounded-3xl"></div>
+                    <div class="w-full h-64 shimmer rounded-3xl"></div>
+                    <div class="w-full h-64 shimmer rounded-3xl"></div>
+                </div>
+            `;
+            lucide.createIcons();
+        }
+
+        function renderResult(data) {
+            // Badge to indicate if it was generated by AI or Local Verified DB
+            const sourceBadge = data.isAI 
+                ? `<span class="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-50 text-blue-700 text-xs font-bold uppercase tracking-wide rounded-full border border-blue-200"><i data-lucide="bot" class="w-3 h-3"></i> AI Generated</span>`
+                : `<span class="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-bold uppercase tracking-wide rounded-full border border-emerald-200"><i data-lucide="shield-check" class="w-3 h-3"></i> Verified Database</span>`;
+
+            resultsContainer.innerHTML = `
+                <div class="mb-10 text-center animate-fade-in">
+                    <div class="flex justify-center mb-4">${sourceBadge}</div>
+                    <h2 class="font-playfair text-3xl md:text-4xl font-bold en-text">${data.titleEn}</h2>
+                    <h2 class="font-hind text-3xl md:text-4xl font-bold bn-text text-emerald-900">${data.titleBn}</h2>
+                </div>
+
+                <!-- Summary Section -->
+                <article class="bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-gold/20 mb-8 relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-2 h-full bg-gold"></div>
+                    <h3 class="font-playfair text-xl font-semibold mb-4 flex items-center gap-2 text-emerald-900">
+                        <i data-lucide="book-open" class="text-gold w-5 h-5"></i> 
+                        <span class="en-text">Overview</span>
+                        <span class="bn-text font-hind">সারসংক্ষেপ</span>
+                    </h3>
+                    <p class="text-gray-700 leading-relaxed font-inter text-justify en-text text-lg">${data.summaryEn}</p>
+                    <p class="font-hind text-gray-700 leading-relaxed text-justify text-xl bn-text">${data.summaryBn}</p>
+                </article>
+
+                <!-- Quranic Evidence Card -->
+                <article class="bg-emerald-900 text-cream rounded-3xl p-8 md:p-10 shadow-lg mb-8">
+                    <div class="flex items-center justify-between mb-8 pb-4 border-b border-gold/30">
+                        <h3 class="font-playfair text-xl text-gold flex items-center gap-2">
+                            <i data-lucide="book" class="w-5 h-5"></i> 
+                            <span class="en-text">Evidence from the Quran</span>
+                            <span class="bn-text font-hind">কুরআনের দলিল</span>
+                        </h3>
+                        <span class="text-sm font-light opacity-80">${data.quranRef}</span>
+                    </div>
+                    
+                    <div class="text-right mb-10">
+                        <p class="font-amiri text-3xl md:text-4xl leading-loose text-cream">${data.quranAr}</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-10">
+                        <div>
+                            <h4 class="text-gold text-xs uppercase tracking-widest mb-3">English</h4>
+                            <p class="font-inter font-light text-lg leading-relaxed">"${data.quranEn}"</p>
+                        </div>
+                        <div>
+                            <h4 class="text-gold text-xs uppercase tracking-widest mb-3 font-hind">বাংলা</h4>
+                            <p class="font-hind text-xl font-light leading-relaxed">"${data.quranBn}"</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Hadith Evidence Card -->
+                <article class="bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-gold/20 relative">
+                    <div class="absolute top-0 right-10 w-12 h-16 bg-gold/10 rounded-b-full flex items-center justify-center">
+                        <i data-lucide="quote" class="text-gold w-5 h-5"></i>
+                    </div>
+                    
+                    <h3 class="font-playfair text-xl font-semibold mb-8 flex items-center gap-2 text-emerald-900">
+                        <span class="en-text">Evidence from the Sunnah</span>
+                        <span class="bn-text font-hind">সুন্নাহ থেকে দলিল</span>
+                    </h3>
+
+                    <div class="text-center max-w-3xl mx-auto mb-10 space-y-6">
+                        <p class="font-amiri text-2xl md:text-3xl leading-loose text-emerald-900">${data.hadithAr}</p>
+                        
+                        <div class="space-y-4">
+                            <p class="font-inter text-gray-700 italic text-lg">"${data.hadithEn}"</p>
+                            <p class="font-hind text-gray-700 text-xl">"${data.hadithBn}"</p>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-center mt-6">
+                        <span class="inline-flex items-center gap-2 px-4 py-2 bg-cream-dark text-emerald-900 rounded-full text-sm font-medium border border-gold/20">
+                            <i data-lucide="bookmark" class="w-4 h-4 text-gold"></i>
+                            ${data.hadithRef}
+                        </span>
+                    </div>
+                </article>
+            `;
+            lucide.createIcons();
+        }
+
+        function renderError(message) {
+            resultsContainer.innerHTML = `
+                <div class="text-center py-20 bg-white rounded-3xl border border-red-200 shadow-sm">
+                    <i data-lucide="alert-triangle" class="w-16 h-16 text-red-400 mx-auto mb-4"></i>
+                    <h2 class="font-playfair text-2xl text-emerald-900 mb-2">
+                        <span class="en-text">AI Connection Failed</span>
+                        <span class="bn-text font-hind">এআই সংযোগ ব্যর্থ হয়েছে</span>
+                    </h2>
+                    <p class="text-red-500 font-inter max-w-md mx-auto text-sm bg-red-50 p-4 rounded-lg mt-4">
+                        ${message}<br><br>
+                        <strong>Developer Note:</strong> You must insert valid API keys for DeepSeek, OpenAI, or Grok in the JS code (Line ~160).
+                    </p>
+                </div>
+            `;
+            lucide.createIcons();
+        }
+
+        // Initialize icons on load
+        lucide.createIcons();
+    </script>
+</body>
+</html>
