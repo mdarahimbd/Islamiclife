@@ -15,7 +15,7 @@ export default async function handler(req, res) {
         return res.status(500).json({ error: "Server missing API Key" });
     }
 
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`;
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${AIzaSyCzs4dUxn1XnfD_5IXdEurwLGM2pnl1hnk}`;
             
     const prompt = `You are an expert Islamic Scholar. Provide accurate Islamic guidance based on the Quran and Sahih Hadith for the topic: "${query}".
     Provide the output STRICTLY in JSON format. DO NOT use markdown code blocks like \`\`\`json. Return ONLY a raw JSON object matching this exact structure:
